@@ -17,14 +17,16 @@ public class PostService {
 	private final SubredditRepository subredditRepository;
 	private final PostRepository postRepository;
     private final AuthService authService;
+    private final PostMapper postMapper;
 	private static final Logger logger = LoggerFactory.getLogger(PostService.class);
 
     @Autowired
 	public PostService(SubredditRepository subredditRepository, PostRepository postRepository,
-			AuthService authService) {
+			AuthService authService, PostMapper postMapper) {
 		this.subredditRepository = subredditRepository;
 		this.postRepository = postRepository;
 		this.authService = authService;
+		this.postMapper = postMapper;
 	}
 
 
