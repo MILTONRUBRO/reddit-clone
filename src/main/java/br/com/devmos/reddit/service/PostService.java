@@ -1,5 +1,7 @@
 package br.com.devmos.reddit.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,8 @@ public class PostService {
 	private final SubredditRepository subredditRepository;
 	private final PostRepository postRepository;
     private final AuthService authService;
-    
+	private static final Logger logger = LoggerFactory.getLogger(PostService.class);
+
     @Autowired
 	public PostService(SubredditRepository subredditRepository, PostRepository postRepository,
 			AuthService authService) {
@@ -29,6 +32,7 @@ public class PostService {
         Subreddit subreddit = subredditRepository.findByName(postRequest.getSubredditName())
                 .orElseThrow(() -> new SubredditNotFoundException(postRequest.getSubredditName()));
         postRepository.save(postMapper.map(postRequest, subreddit, authService.getCurrentUser()));
+        logger.info("Save a post " + postRequest.getPostName());
     }
 
 
