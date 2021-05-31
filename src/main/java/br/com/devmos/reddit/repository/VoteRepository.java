@@ -1,18 +1,16 @@
 package br.com.devmos.reddit.repository;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.devmos.reddit.models.Post;
-import br.com.devmos.reddit.models.Subreddit;
 import br.com.devmos.reddit.models.User;
+import br.com.devmos.reddit.models.Vote;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
-
-	List<Post> findAllBySubreddit(Subreddit subreddit);
-	List<Post> findByUser(User user);
+public interface VoteRepository extends JpaRepository<Vote, Long>{
+	Optional<Vote> findTopByPostAndUserOrderByVoteIdDesc(Post post, User currentUser);
 
 }

@@ -11,6 +11,8 @@ import br.com.devmos.reddit.models.Subreddit;
 import br.com.devmos.reddit.models.User;
 import br.com.devmos.reddit.models.Vote;
 import br.com.devmos.reddit.models.VoteType;
+import br.com.devmos.reddit.repository.CommentRepository;
+import br.com.devmos.reddit.repository.VoteRepository;
 
 @Mapper(componentModel = "spring")
 public class PostMapper {
