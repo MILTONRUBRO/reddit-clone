@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.Mapping;
 
 import br.com.devmos.reddit.dto.PostRequest;
+import br.com.devmos.reddit.dto.PostResponse;
 import br.com.devmos.reddit.models.Post;
 import br.com.devmos.reddit.models.Subreddit;
 import br.com.devmos.reddit.models.User;

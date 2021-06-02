@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.devmos.reddit.dto.PostRequest;
 import br.com.devmos.reddit.exceptions.SubredditNotFoundException;
+import br.com.devmos.reddit.mapper.PostMapper;
 import br.com.devmos.reddit.models.Subreddit;
 import br.com.devmos.reddit.repository.PostRepository;
 import br.com.devmos.reddit.repository.SubredditRepository;
