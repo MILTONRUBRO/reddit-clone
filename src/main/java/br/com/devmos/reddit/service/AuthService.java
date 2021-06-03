@@ -13,6 +13,9 @@ import br.com.devmos.reddit.exceptions.SpringRedditException;
 import br.com.devmos.reddit.models.NotificationEmail;
 import br.com.devmos.reddit.models.User;
 import br.com.devmos.reddit.models.VerificationToken;
+import br.com.devmos.reddit.repository.UserRepository;
+import br.com.devmos.reddit.repository.VerificationTokenRepository;
+import br.com.devmos.reddit.repository.userRepository;
 
 @Service
 @Transactional
