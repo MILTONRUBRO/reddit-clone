@@ -12,6 +12,9 @@ public class RefreshToken {
 		this.token = token;
 		this.createdDate = createdDate;
 	}
+	public RefreshToken() {
+		
+	}
 	public Long getId() {
 		return id;
 	}
