@@ -23,7 +23,7 @@ public class MailService {
 		this.mailContentBuilder = mailContentBuilder;
 	}
 	
-	void sendEmail(NotificationEmail notificationEmail) {
+	public void sendEmail(NotificationEmail notificationEmail) {
 		
 		MimeMessagePreparator messagePreparator = mimeMessage -> {
 			MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
@@ -41,5 +41,6 @@ public class MailService {
 			throw new SpringRedditException("Exception occurred when sending mail to " + notificationEmail.getRecipient(), e);
 		}
 	}
+
 
 }
