@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.devmos.reddit.models.User;
 import br.com.devmos.reddit.repository.UserRepository;
+import static java.util.Collections.singletonList;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
