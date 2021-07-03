@@ -3,14 +3,18 @@ package br.com.devmos.reddit.models;
 import java.time.Instant;
 
 public class User {
-	
+
 	private Long id;
 	private String userName;
 	private String password;
 	private String email;
 	private Instant created;
 	private boolean enabled;
-	
+
+	public User() {
+
+	}
+
 	public User(String userName, String password, String email, Instant created, boolean enabled) {
 		this.userName = userName;
 		this.password = password;
@@ -66,5 +70,5 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	
+
 }

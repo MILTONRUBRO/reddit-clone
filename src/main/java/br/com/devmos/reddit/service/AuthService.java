@@ -4,18 +4,27 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.transaction.Transactional;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import br.com.devmos.reddit.dto.AuthenticationResponse;
+import br.com.devmos.reddit.dto.LoginRequest;
+import br.com.devmos.reddit.dto.RefreshTokenRequest;
+import br.com.devmos.reddit.dto.RegisterRequest;
 import br.com.devmos.reddit.exceptions.SpringRedditException;
 import br.com.devmos.reddit.models.NotificationEmail;
 import br.com.devmos.reddit.models.User;
 import br.com.devmos.reddit.models.VerificationToken;
 import br.com.devmos.reddit.repository.UserRepository;
 import br.com.devmos.reddit.repository.VerificationTokenRepository;
-import br.com.devmos.reddit.repository.userRepository;
+import br.com.devmos.reddit.security.JwtProvider;
 
 @Service
 @Transactional
@@ -31,7 +40,7 @@ public class AuthService {
 
 	public void signup(RegisterRequest registerRequest) {
 		User user = new User();
-		user.setUsername(registerRequest.getUsername());
+		user.setUserName(registerRequest.getUsername());
 		user.setEmail(registerRequest.getEmail());
 		user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
 		user.setCreated(Instant.now());
