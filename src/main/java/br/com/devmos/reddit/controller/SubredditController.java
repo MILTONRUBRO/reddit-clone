@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.devmos.reddit.dto.SubredditDto;
+import br.com.devmos.reddit.service.SubredditService;
 
 @RestController
 @RequestMapping("/api/subreddit")
