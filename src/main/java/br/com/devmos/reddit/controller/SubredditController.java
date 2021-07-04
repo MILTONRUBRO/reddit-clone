@@ -16,7 +16,6 @@ import br.com.devmos.reddit.service.SubredditService;
 
 @RestController
 @RequestMapping("/api/subreddit")
-@Slf4j
 public class SubredditController {
 
     private final SubredditService subredditService;

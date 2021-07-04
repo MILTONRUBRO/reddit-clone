@@ -16,6 +16,9 @@ import br.com.devmos.reddit.repository.CommentRepository;
 import br.com.devmos.reddit.repository.PostRepository;
 import br.com.devmos.reddit.repository.UserRepository;
 
+import static java.util.stream.Collectors.toList;
+
+
 @Service
 public class CommentService {
     private static final String POST_URL = "";
@@ -51,7 +54,7 @@ public class CommentService {
     }
 
     private void sendCommentNotification(String message, User user) {
-        mailService.sendMail(new NotificationEmail(user.getUsername() + " Commented on your post", user.getEmail(), message));
+        mailService.sendMail(new NotificationEmail(user.getUserName() + " Commented on your post", user.getEmail(), message));
     }
 
     public List<CommentsDto> getAllCommentsForPost(Long postId) {

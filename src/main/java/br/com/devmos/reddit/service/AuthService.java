@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +65,7 @@ public class AuthService {
 	}
 
 	private void fetchUserAndEnable(VerificationToken verificationToken) {
-		String username = verificationToken.getUser().getUsername();
+		String username = verificationToken.getUser().getUserName();
 		User user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new SpringRedditException("User not found with name - " + username));
 		user.setEnabled(true);
