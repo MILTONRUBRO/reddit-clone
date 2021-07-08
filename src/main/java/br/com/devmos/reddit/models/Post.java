@@ -1,9 +1,18 @@
 package br.com.devmos.reddit.models;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.time.Instant;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Post {
 	
+	@Id
+    @GeneratedValue(strategy = IDENTITY)
 	private Long id;
 	private String postName;
 	private String url;
