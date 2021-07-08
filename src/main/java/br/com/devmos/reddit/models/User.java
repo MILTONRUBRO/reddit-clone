@@ -2,15 +2,28 @@ package br.com.devmos.reddit.models;
 
 import java.time.Instant;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+@Entity
 public class User {
 
-	private Long id;
-	private String userName;
-	private String password;
-	private String email;
-	private Instant created;
-	private boolean enabled;
-
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Long userId;
+    @NotBlank(message = "Username is required")
+    private String username;
+    @NotBlank(message = "Password is required")
+    private String password;
+    @Email
+    @NotEmpty(message = "Email is required")
+    private String email;
+    private Instant created;
+    private boolean enabled;
+    
 	public User() {
 
 	}
