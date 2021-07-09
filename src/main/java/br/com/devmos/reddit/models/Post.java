@@ -14,13 +14,22 @@ public class Post {
 	@Id
     @GeneratedValue(strategy = IDENTITY)
 	private Long id;
-	private String postName;
-	private String url;
-	private String description;
-	private Integer voteCounter;
-	private User user;
-	private Instant creatDate;
 	
+    @NotBlank(message = "Post Name cannot be empty or Null")
+    private String postName;
+    @Nullable
+    private String url;
+    @Nullable
+    @Lob
+    private String description;
+    private Integer voteCount = 0;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    private User user;
+    private Instant createdDate;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    private Subreddit subreddit;
 	public Post(String postName, String url, String description, Integer voteCounter, User user, Instant creatDate) {
 		this.postName = postName;
 		this.url = url;
