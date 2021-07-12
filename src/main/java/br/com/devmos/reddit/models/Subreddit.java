@@ -1,15 +1,33 @@
 package br.com.devmos.reddit.models;
 
-import java.time.Instant;
+import static javax.persistence.GenerationType.IDENTITY;
 
+import java.time.Instant;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import static javax.persistence.FetchType.LAZY;
+
+@Entity
 public class Subreddit {
 	
+	@Id
+    @GeneratedValue(strategy = IDENTITY)
 	private Long id;
-	private String name;
-	private String description;
-	private Instant createdDate;
-	private Post post;
-	private User user;
+    @NotBlank(message = "Community name is required")
+    private String name;
+    @NotBlank(message = "Description is required")
+    private String description;
+    @OneToMany(fetch = LAZY)
+    private List<Post> posts;
+    private Instant createdDate;
+    @ManyToOne(fetch = LAZY)
+    private User user;
 	
 	public Subreddit(String name, String description, Instant createdDate, Post post, User user) {
 		this.name = name;
