@@ -29,11 +29,11 @@ public class Subreddit {
     @ManyToOne(fetch = LAZY)
     private User user;
 	
-	public Subreddit(String name, String description, Instant createdDate, Post post, User user) {
+	public Subreddit(String name, String description, Instant createdDate, List<Post> posts, User user) {
 		this.name = name;
 		this.description = description;
 		this.createdDate = createdDate;
-		this.post = post;
+		this.posts = posts;
 		this.user = user;
 	}
 	public Long getId() {
