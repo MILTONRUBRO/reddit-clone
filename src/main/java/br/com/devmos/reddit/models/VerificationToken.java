@@ -23,6 +23,9 @@ public class VerificationToken {
 		this.expiryDate = expiryDate;
 	}
 
+	public VerificationToken() {
+	}
+
 	public Long getId() {
 		return id;
 	}

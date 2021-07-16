@@ -38,6 +38,21 @@ public class AuthService {
 	private final AuthenticationManager authenticationManager;
 	private final JwtProvider jwtProvider;
 	private final RefreshTokenService refreshTokenService;
+	
+	
+
+	public AuthService(PasswordEncoder passwordEncoder, UserRepository userRepository,
+			VerificationTokenRepository verificationTokenRepository, MailService mailService,
+			AuthenticationManager authenticationManager, JwtProvider jwtProvider,
+			RefreshTokenService refreshTokenService) {
+		this.passwordEncoder = passwordEncoder;
+		this.userRepository = userRepository;
+		this.verificationTokenRepository = verificationTokenRepository;
+		this.mailService = mailService;
+		this.authenticationManager = authenticationManager;
+		this.jwtProvider = jwtProvider;
+		this.refreshTokenService = refreshTokenService;
+	}
 
 	public void signup(RegisterRequest registerRequest) {
 		User user = new User();
@@ -50,7 +65,7 @@ public class AuthService {
 		userRepository.save(user);
 
 		String token = generateVerificationToken(user);
-		mailService.sendMail(new NotificationEmail("Please Activate your Account", user.getEmail(),
+		mailService.sendEmail(new NotificationEmail("Please Activate your Account", user.getEmail(),
 				"Thank you for signing up to Spring Reddit, "
 						+ "please click on the below url to activate your account : "
 						+ "http://localhost:8080/api/auth/accountVerification/" + token));
